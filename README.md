@@ -26,7 +26,7 @@ npm start
 
 ## Integrantes do grupo
 
-1 - João Motta - 1137220
-2 - Felipe Walter - 1137259
-3 - Estevan Fernandes - 1137268
-4 - Carlos Machado - 1136797
+- João Motta - 1137220
+- Felipe Walter - 1137259
+- Estevan Fernandes - 1137268
+- Carlos Machado - 1136797
