@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { LoginScreen } from "./src/screens/login-screen";
+import { Header } from "./src/components/header";
+import { HomeScreen } from "./src/screens/home-screen";
+import { GroupInfoScreen } from "./src/screens/group-info-screen";
+import { ProductDetailsScreen } from "./src/screens/product-details-screen";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+function RootStack() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen
+        name="Produtos"
+        component={HomeScreen}
+        options={{
+          header: Header,
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        options={{
+          header: null,
+        }}
+        component={LoginScreen}
+      />
+      <Stack.Screen name="GroupInfo" component={GroupInfoScreen} />
+      <Stack.Screen
+        options={{
+          headerTitle: "Detalhes do Produto",
+        }}
+        name="ProductDetails"
+        component={ProductDetailsScreen}
+      />
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
+  );
+}
